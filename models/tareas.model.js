@@ -62,7 +62,21 @@ class Tareas {
         if( this._listado[id]) {
             delete this._listado[id]
         }
-        // console.log('listado', this._listado)
+    }
+
+    completarTareas( ids = []) {
+        ids.forEach ( id => {
+            const tarea = this._listado[id]
+            if(!tarea.completadoEn) {
+                tarea.completadoEn = true
+            }
+        })
+
+        this.listadoArray.forEach ( (tarea, index) => {
+            if(!ids.includes(tarea.id)) {
+                this._listado[tarea.id].completadoEn = false
+            }
+        })
     }
     
 
